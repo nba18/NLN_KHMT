@@ -10,9 +10,10 @@ function Registerpage(){
             <Headerandnav />
             <div className="grid grid-cols-[minmax(900px,_1fr)_200px]">
                 <Register />
-                <Boloc />
             </div>
-            <Footer />
+            <div className="mt-[45px]">
+                <Footer />
+            </div>
         </div>
     );
 }

@@ -14,6 +14,7 @@ route(app)
 
 const PORT = config.app.port;
 const url = config.DB.url;
+
 mongoose.connect(url).then((res) => {
     console.log(`Kết nối thành công`)
 }).catch((error) => {

@@ -1,8 +1,8 @@
 import React from "react";
-import Boloc from "../components/componetChung/boloc";
 import Footer from "../components/componetChung/footer";
 import Headerandnav from "../components/componetChung/headerAndnav";
-import Home from "../components/componetRieng/Home";
+import Home from "../components/componetRieng/home";
+import Bia from "../assets/images/bia.png";
 
 function Homepage(){
     return(
@@ -10,7 +10,7 @@ function Homepage(){
             <Headerandnav />
             <div className="grid grid-cols-[minmax(900px,_1fr)_300px]">
                 <Home />
-                <Boloc />
+                <img src={Bia} alt="error" className=" w-[280px] ml-4" />
             </div>
             <Footer />
         </div>

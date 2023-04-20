@@ -20,7 +20,11 @@ const Usermodel = mongoose.Schema(
         phanloai: {
             type: Number,
             default: '1',
-        }
+        },
+        dsyeuthich : [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Luanvanmodel'
+        }]
         
     },
     {timestamps: true}

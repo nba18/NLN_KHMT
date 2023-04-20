@@ -32,6 +32,14 @@ const Chuyenmuccontroller = {
             res.status(403).json(error)
         }
     },
+    xoaChuyenmuc: async (req, res) =>{
+        try {
+            await Chuyenmucmodel.findByIdAndDelete(req.body.id)
+            res.status(200).json({ 'thanhcong': 'Xóa thành công' })
+        } catch (error) {
+            res.status(403).json(error)
+        }
+    },
 
 }
 

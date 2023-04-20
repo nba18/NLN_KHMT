@@ -1,17 +1,22 @@
 import React from "react";
-import TextField from '@mui/material/TextField';
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useSnackbar } from "notistack";
+import { userAPI } from "../../services/api";
 
 function Register() {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const { enqueueSnackbar } = useSnackbar();
+    const onSubmit = async (data) => {
+        console.log(data)
+        const temp = await userAPI.register(data)
+        temp.data.thanhcong ? enqueueSnackbar(temp.data.thanhcong, { variant: 'success' }) :
+            enqueueSnackbar(temp.data.thatbai, { variant: 'error' })
+    };
     return (
         <div className="">
             <div className="text-lg font-bold">Đăng ký tài khoản</div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="text-lg flex mt-2">Tài khoản<div className="text-red-500">*</div></div>
-                <div><TextField variant="outlined" {...register("taikhoan")} className="w-72" /></div>
                 <div className="text-lg flex mt-4">Họ tên<div className="text-red-500">*</div></div>
                 <div><TextField variant="outlined" {...register("hoten")} className="w-72" /></div>
                 <div className="text-lg flex mt-4">Email<div className="text-red-500">*</div></div>

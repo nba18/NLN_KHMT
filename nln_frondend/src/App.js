@@ -10,6 +10,10 @@ import Chitietluanvanpage from './pages/chitietluanvanPage';
 import Homepage from './pages/homePage';
 import Loginpage from './pages/loginPage';
 import Registerpage from './pages/registerPage';
+import Khoapage from './pages/khoaPage';
+import Yeuthichpage from './pages/userPage/yeuthichPage';
+import Viewpdfpage from './pages/viewpdfPage';
+import Gioithieupage from './pages/gioithieuPage';
 
 function App() {
   return (
@@ -18,6 +22,10 @@ function App() {
         <Route exact path='/' element={<Homepage />} />;
         <Route exact path='/register' element={<Registerpage />} />;
         <Route exact path='/login' element={<Loginpage />} />;
+        <Route exact path='/khoa' element={<Khoapage />} />;
+        <Route exact path='/gioithieu' element={<Gioithieupage />} />;
+        <Route exact path='/user/dsyeuthich' element={<Yeuthichpage />} />;
+        /* Admin Route*/
         <Route path={`/luanvan/:id`}element={<Chitietluanvanpage />} />;
         /* Admin Route*/
         <Route exact path='/admin' element={<Adminpage />} />;

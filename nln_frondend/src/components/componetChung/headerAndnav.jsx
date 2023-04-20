@@ -1,48 +1,81 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LogoCTU from "../../assets/images/logo.png";
 import { Link } from 'react-router-dom';
+import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
+import { IconButton, InputBase, Paper } from "@mui/material";
+import { khoaAPI } from "../../services/api";
 
 function Headerandnav() {
     const [isonClick, setisonClick] = useState(false);
+    const [isonClick1, setisonClick1] = useState(false);
+    const [khoalist, setKhoalist] = useState([]);
+    const fetchKhoa = async () => {
+        const List = await khoaAPI.laykhoa();
+        setKhoalist(List.data);
+    };
+    useEffect(() => {
+        fetchKhoa();
+    },);
+    const logout = async () => {
+        window.location.reload()
+        localStorage.clear()
+    }
     return (
         <div className="relative">
-            <div className="flex bg-[#F0F2F5] h-32 pl-5">
+            <div className="flex bg-[#93ccfd] h-32 pl-5">
                 <img src={LogoCTU} alt="error" className="w-20 my-auto" />
-                <div className="self-center ml-2">
+                <div className="self-center ml-2 text-[#1e428a]">
                     <div className="text-2xl font-bold">HỆ THỐNG GIỚI THIỆU LUẬN VĂN</div>
                     <div className="text-xl">Trường CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG</div>
                 </div>
             </div>
-            <div className="flex bg-[#F0F2F5] mt-1 pl-3 h-10">
-                <Link  to="/" className="mr-6 self-center ">
-                    <div className="text-base font-bold ">TRANG CHỦ</div>
+            <div className="flex bg-[#bfdffe] mt-0.5 pl-3 h-10 text-[#1f4aae]">
+                <Link to="/" className="mr-6 self-center ">
+                    <div className="text-base font-bold hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1">TRANG CHỦ</div>
+                </Link >
+                <div className="flex text-base mr-6 font-bold self-center cursor-pointer hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1" onClick={() => { isonClick !== true ? setisonClick(true) : setisonClick(false) }}>CÁC KHOA<AiFillCaretDown className="self-center" /></div>
+                <Link to="/gioithieu" className="mr-6 self-center">
+                    <div className="text-base font-bold hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1">GIỚI THIỆU</div>
                 </Link>
-                <div className="text-base font-bold mr-6 self-center cursor-pointer" onClick={() => { isonClick != true ? setisonClick(true) : setisonClick(false) }}>CÁC KHOA</div>
                 <Link className="mr-6 self-center">
-                    <div className="text-base font-bold mr-6 ">GIỚI THIỆU</div>
+                    <div className="text-base font-bold  hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1">TÌM KIẾM NÂNG CAO</div>
                 </Link>
-                <Link className="mr-6 self-center">
-                    <div className="text-base font-bold mr-6 ">LIÊN HỆ</div>
-                </Link>
-                <Link to="/login" className="mr-6 self-center">
-                    <div className="text-base font-bold mr-6 ">ĐĂNG NHẬP</div>
-                </Link>
-                <Link  to="/register" className="mr-6 self-center">
-                    <div className="text-base font-bold mr-6 ">ĐĂNG KÝ</div>
-                </Link>
+                {localStorage.getItem('id') && <div className="flex text-base mr-6 font-bold self-center cursor-pointer hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1" onClick={() => { isonClick1 !== true ? setisonClick1(true) : setisonClick1(false) }}>{localStorage.getItem('email')}<AiFillCaretDown className="self-center" /></div>}
+                {!localStorage.getItem('id') && <Link to="/login" className="mr-6 self-center">
+                    <div className="text-base font-bold  hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1">ĐĂNG NHẬP</div>
+                </Link>}
+                {!localStorage.getItem('id') && <Link to="/register" className="mr-6 self-center">
+                    <div className="text-base font-bold hover:bg-[#2570eb] hover:text-white h-8 rounded-lg p-1">ĐĂNG KÝ</div>
+                </Link>}
             </div>
-            {isonClick ? <div className="absolute mt-1 z-10 bg-white shadow-xl left-32 border">
-                <div className="font-bold text-sm my-2 mx-2">Khoa học máy tính</div>
-                <div className="font-bold text-sm my-2 mx-2">Công nghệ thông tin</div>
-                <div className="font-bold text-sm my-2 mx-2">Hệ thống thông tin</div>
-                <div className="font-bold text-sm my-2 mx-2">Kỹ thuật phần mềm</div>
-                <div className="font-bold text-sm my-2 mx-2">Mạng máy tính và truyền thông dữ liệu</div>
-                <div className="font-bold text-sm my-2 mx-2">Truyền thông đa phương tiện</div>
-                </div> : <></>}
-
-            <div className="right-10">
+            <div className="mt-1 w-full text-center ">
+                <div className="border-2 w-full flex ">
+                    <InputBase
+                        sx={{ ml: 1, flex: 1 }}
+                        placeholder="Tìm kiếm luận văn . . . ."
+                    />
+                    <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                        <AiOutlineSearch />
+                    </IconButton>
+                </div>
                 
             </div>
+            {isonClick ? <div className="absolute top-[170px] z-10 bg-white shadow-2xl left-[140px] border">
+                {khoalist.map((khoa) => {
+                    return (
+                        <div key={khoa._id} className="font-bold text-sm my-3 mx-2 py-1 rounded-md hover:bg-[#93ccfd] cursor-pointer"><Link to="/khoa" state={{ id: khoa._id, tenkhoa: khoa.tenkhoa }} onClick={() => { isonClick !== true ? setisonClick(true) : setisonClick(false) }}>{khoa.tenkhoa}</Link></div>
+                    );
+                })}
+
+            </div> : <></>}
+
+            {isonClick1 ? <div className="absolute top-[170px] z-10 bg-white shadow-2xl left-[580px] border">
+                <div className="font-bold text-sm my-3 mx-2 py-1 rounded-md hover:bg-[#93ccfd] cursor-pointer">Hồ sơ cá nhân</div>
+                <Link to='/user/dsyeuthich'><div className="font-bold text-sm my-3 mx-2 py-1 rounded-md hover:bg-[#93ccfd] cursor-pointer">Luận văn yêu thích</div></Link>
+                {localStorage.getItem('phanloai') == 2 && <Link to='/admin'><div className="font-bold text-sm my-3 mx-2 py-1 rounded-md hover:bg-[#93ccfd] cursor-pointer">Quản lý hệ thống</div></Link>}
+                <div className="font-bold text-sm my-3 mx-2 py-1 rounded-md hover:bg-[#93ccfd] cursor-pointer" onClick={logout}>Đăng xuất</div>
+            </div> : <></>}
+
         </div>
     );
 }

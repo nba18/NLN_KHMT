@@ -35,6 +35,7 @@ const Nienkhoacontroller = {
         try {
             const nienkhoa = await Nienkhoamodel.find()
             if (nienkhoa) {
+                nienkhoa.sort((a, b) => b.nam - a.nam)
                 res.status(200).json(nienkhoa)
             } else {
                 res.status(200).json({ 'thatbai': 'Rỗng' })
@@ -43,7 +44,15 @@ const Nienkhoacontroller = {
             res.status(403).json(error)
         }
     },
-
+    xoaNienkhoa: async (req, res) =>{
+        console.log(req.body)
+        try {
+            await Nienkhoamodel.findByIdAndDelete(req.body.id)
+            res.status(200).json({ 'thanhcong': 'Xóa thành công' })
+        } catch (error) {
+            res.status(403).json(error)
+        }
+    },
 }
 
 module.exports = Nienkhoacontroller

@@ -8,8 +8,8 @@ Luanvancard.propTypes = {
 function Luanvancard(props) {
     const { luanvan } = props
     return (
-        <div className="mt-4">
-            <Link to={`/luanvan/${luanvan._id}`}><div className="text-cyan-600">{luanvan.tenluanvan}</div></Link>
+        <div className="mt-3">
+            <Link to={`/luanvan/${luanvan._id}`}><div className="text-[#1f4aae]">{luanvan.tenluanvan}</div></Link>
             <div>Người thực hiện: {luanvan.nguoithuchien}</div>
         </div>
     );

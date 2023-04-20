@@ -32,6 +32,14 @@ const Khoacontroller = {
             res.status(403).json(error)
         }
     },
+    xoaKhoa: async (req, res) =>{
+        try {
+            await Khoamodel.findByIdAndDelete(req.body.id)
+            res.status(200).json({ 'thanhcong': 'Xóa thành công' })
+        } catch (error) {
+            res.status(403).json(error)
+        }
+    },
 
 }
 

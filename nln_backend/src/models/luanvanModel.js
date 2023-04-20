@@ -21,6 +21,9 @@ const Luanvanmodel = mongoose.Schema(
         nguoithuchien: {
             type: String,
         },
+        nguoihuongdan: {
+            type: String,
+        },
         tomtat: {
             type: String
         },
