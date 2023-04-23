@@ -3,9 +3,7 @@ const Usermodel = require("../models/userModel");
 const Usercontroller = {
     login: async (req, res) => {
         try {
-            console.log(req.body)
             const user = await Usermodel.findOne({ taikhoan: req.body.taikhoan })
-            console.log(user.matkhau)
             if (user) {
                 if (req.body.matkhau == user.matkhau) {
                     res.status(200).json(user)

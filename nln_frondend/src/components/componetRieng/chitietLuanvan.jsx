@@ -30,7 +30,7 @@ function Chitietluanvan() {
         }
 
     };
-    const path = "http://localhost:5000/files/" + luanvan.file?.filename
+    const path = "https://nln-khmt-server.onrender.com/files/" + luanvan.file?.filename
     return (
         <div className="mt-4">
             <div className="text-2xl font-semibold">{luanvan.tenluanvan}</div>

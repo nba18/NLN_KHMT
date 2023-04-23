@@ -45,7 +45,6 @@ const Nienkhoacontroller = {
         }
     },
     xoaNienkhoa: async (req, res) =>{
-        console.log(req.body)
         try {
             await Nienkhoamodel.findByIdAndDelete(req.body.id)
             res.status(200).json({ 'thanhcong': 'Xóa thành công' })
