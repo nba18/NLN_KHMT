@@ -1,12 +1,8 @@
 import React from "react";
-
-
 import { useLocation } from "react-router-dom";
-
 import Headerandnav from "../components/componetChung/headerAndnav";
 import Footer from "../components/componetChung/footer";
 import Khoa from "../components/componetRieng/Khoa";
-
 
 
 function Khoapage() {

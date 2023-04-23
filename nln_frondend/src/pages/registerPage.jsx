@@ -1,5 +1,4 @@
 import React from "react";
-import Boloc from "../components/componetChung/boloc";
 import Footer from "../components/componetChung/footer";
 import Headerandnav from "../components/componetChung/headerAndnav";
 import Register from "../components/loginAndregister/register";

@@ -1,7 +1,5 @@
-const req = require("express/lib/request");
-const mongoose = require("mongoose");
 
-const Khoamodel = require("../models/Khoamodel");
+const Khoamodel = require("../models/khoaModel");
 
 const Khoacontroller = {
     themKhoa: async (req, res) => {
