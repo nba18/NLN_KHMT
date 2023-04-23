@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../components/componetChung/footer";
 import Headerandnav from "../components/componetChung/headerAndnav";
-import Home from "../components/componetRieng/home";
+import Home from "../components/componetRieng/Home";
 import Bia from "../assets/images/bia.png";
 
 function Homepage(){
