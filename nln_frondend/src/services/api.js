@@ -1,20 +1,39 @@
 import axios from 'axios'
 
+// export function callApi(method, endpoint, data) {
+//     return axios({
+//         method: method,
+//         url: `http://localhost:5000${endpoint}`,
+//         data: data,
+//         headers: {
+//             'Content-Type': 'application/json',
+//         }
+//     });
+// }
 export function callApi(method, endpoint, data) {
     return axios({
         method: method,
-        url: `http://localhost:5000${endpoint}`,
+        url: `https://nln-khmt-server.onrender.com${endpoint}`,
         data: data,
         headers: {
             'Content-Type': 'application/json',
         }
     });
 }
-
+// export function callApi1(method, endpoint, data) {
+//     return axios({
+//         method: method,
+//         url: `http://localhost:5000${endpoint}`,
+//         data: data,
+//         headers: {
+//             'Content-Type': 'multipart/form-data',
+//         }
+//     });
+// }
 export function callApi1(method, endpoint, data) {
     return axios({
         method: method,
-        url: `http://localhost:5000${endpoint}`,
+        url: `https://nln-khmt-server.onrender.com${endpoint}`,
         data: data,
         headers: {
             'Content-Type': 'multipart/form-data',
