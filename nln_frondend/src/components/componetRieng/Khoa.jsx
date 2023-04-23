@@ -13,6 +13,8 @@ function Khoa(props) {
     const [nienkhoalist, setNienkhoalist] = useState([]);
     const [chuyenmuc, setChuyenmuc] = useState('');
     const [nam, setNam] = useState('');
+    const [tenchuyenmuc, setTenchuyenmuc] = useState('');
+    const [tennam, setTennam] = useState('');
     const chonchuyenmuc = (data) => {
         setChuyenmuc(data)
     }
@@ -63,6 +65,16 @@ function Khoa(props) {
             }
 
         }
+        chuyemuclist.forEach(e =>{
+            if(e._id == chuyenmuc){
+                setTenchuyenmuc(e.tenchuyenmuc)
+            }
+        })
+        nienkhoalist.forEach(e =>{
+            if(e._id == nam){
+                setTennam(e.nam)
+            }
+        })
         fetchChuyenmuc();
         fetchNienkhoa();
     }, [nam, chuyenmuc, id]);
@@ -70,7 +82,7 @@ function Khoa(props) {
         <div className="mt-2 grid grid-cols-[minmax(900px,_1fr)_300px]">
             <div>
                 <div className="text-2xl font-medium">Luận văn Khoa {tenkhoa}</div>
-                <div>Luận văn theo chuyên mục: {chuyenmuc} -- Năm thực hiện: -- {nam}</div>
+                <div className="mt-1 flex">Luận văn theo chuyên mục: <div className="ml-1 text-red-500">{tenchuyenmuc}</div> ---Năm thực hiện: <div className="ml-1 text-red-500">{tennam}</div></div>
                 {luanvanlist?.map(luanvan => {
                     return (
                         <Luanvancard key={luanvan._id} luanvan={luanvan} />

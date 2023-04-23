@@ -3,7 +3,7 @@ import Adminpage from './pages/adminPage/adminPage';
 import Qlchuyenmucpage from './pages/adminPage/qlchuyenmuc_cackhoaPage';
 import Qlluanvanpage from './pages/adminPage/qlluanvanPage';
 import Qlnienkhoapage from './pages/adminPage/qlnienkhoaPage';
-import Themchuyenmuc_cackhoapage from './pages/adminPage/themchuyenmuc_cackhoaPage';
+import Themchuyenmuccackhoapage from './pages/adminPage/themchuyenmuc_cackhoaPage';
 import Themluanvanpage from './pages/adminPage/themluanvanPage';
 import Themnienkhoapage from './pages/adminPage/themnienkhoaPage';
 import Chitietluanvanpage from './pages/chitietluanvanPage';
@@ -12,29 +12,28 @@ import Loginpage from './pages/loginPage';
 import Registerpage from './pages/registerPage';
 import Khoapage from './pages/khoaPage';
 import Yeuthichpage from './pages/userPage/yeuthichPage';
-import Viewpdfpage from './pages/viewpdfPage';
 import Gioithieupage from './pages/gioithieuPage';
+import Timkiempage from './pages/timkiemPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path='/' element={<Homepage />} />;
-        <Route exact path='/register' element={<Registerpage />} />;
-        <Route exact path='/login' element={<Loginpage />} />;
-        <Route exact path='/khoa' element={<Khoapage />} />;
-        <Route exact path='/gioithieu' element={<Gioithieupage />} />;
-        <Route exact path='/user/dsyeuthich' element={<Yeuthichpage />} />;
-        /* Admin Route*/
-        <Route path={`/luanvan/:id`}element={<Chitietluanvanpage />} />;
-        /* Admin Route*/
-        <Route exact path='/admin' element={<Adminpage />} />;
-        <Route exact path='/admin/themnienkhoa' element={<Themnienkhoapage />} />;
-        <Route exact path='/admin/themchuyenmuccackhoa' element={<Themchuyenmuc_cackhoapage />} />;
-        <Route exact path='/admin/themluanvan' element={<Themluanvanpage />} />;
-        <Route exact path='/admin/nienkhoa' element={<Qlnienkhoapage />} />;
-        <Route exact path='/admin/chuyenmuccackhoa' element={<Qlchuyenmucpage />} />;
-        <Route exact path='/admin/luanvan' element={<Qlluanvanpage />} />;
+        <Route path='/register' element={<Registerpage />} />;
+        <Route path='/login' element={<Loginpage />} />;
+        <Route path='/khoa' element={<Khoapage />} />;
+        <Route path='/gioithieu' element={<Gioithieupage />} />;
+        <Route path='/user/dsyeuthich' element={<Yeuthichpage />} />;
+        <Route path='/timkiem' element={<Timkiempage />} />;
+        <Route path={`/luanvan/:id`} element={<Chitietluanvanpage />} />;
+        <Route path='/admin' element={<Adminpage />} />;
+        <Route path='/admin/themnienkhoa' element={<Themnienkhoapage />} />;
+        <Route path='/admin/themchuyenmuccackhoa' element={<Themchuyenmuccackhoapage />} />;
+        <Route path='/admin/themluanvan' element={<Themluanvanpage />} />;
+        <Route path='/admin/nienkhoa' element={<Qlnienkhoapage />} />;
+        <Route path='/admin/chuyenmuccackhoa' element={<Qlchuyenmucpage />} />;
+        <Route path='/admin/luanvan' element={<Qlluanvanpage />} />;
       </Routes>
     </BrowserRouter>
   );
